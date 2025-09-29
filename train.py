@@ -18,9 +18,7 @@ flags.DEFINE_integer('job_idx', None, 'Job idx for job-array sweeps. From 0 to n
 flags.DEFINE_integer('job_cluster', None, 'Job cluster ID.')
 FLAGS = flags.FLAGS
 
-
 def main(_):
-
   CFG_PATH, JOB_IDX = FLAGS.config, FLAGS.job_idx
   cfg, _ = utils.load_config(CFG_PATH)
 
