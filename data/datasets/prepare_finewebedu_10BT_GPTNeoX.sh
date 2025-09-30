@@ -4,18 +4,20 @@
 # Expect some token loss by batched concat_chunk.
 
 export SOFT_FILELOCK=1
-export HF_HOME=/fast/najroldi/hf_fast
-export TMPDIR=/fast/najroldi/tmp
-export HOME=/fast/najroldi/tmp 
+export HF_HOME=/fast/atatjer/hf_fast
+export TMPDIR=/fast/atatjer/tmp
+export HOME=/fast/atatjer/tmp 
 
-mkdir -p /fast/najroldi/tmp
-mkdir -p /fast/najroldi/hf_fast
-cd ~/plainLM
+mkdir -p /fast/atatjer/tmp
 
-PYTHONPATH=. python -m pdb data/datasets/prepare.py \
-  --out_path="/fast/najroldi/data/lm/fwedu/fwedu_sample_100BT" \
-  --cache_path="/fast/najroldi/tmp" \
-  --chunk \
+PYTHONPATH=. python data/datasets/prepare.py \
+  --out_path="/fast/atatjer/data/fwedu_sample_10BT" \
+  --cache_path="/fast/atatjer/tmp" \
+  --download --tokenize --chunk \
+  --save_tokenized --save_tokenizer \
+  --dataset_path="HuggingFaceFW/fineweb-edu" \
+  --dataset_split="train" \
+  --dataset_name="sample-10BT" \
   --tokenizer="EleutherAI/gpt-neox-20b" \
   --seq_length=2048 \
   --split_train_valid=True \

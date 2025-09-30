@@ -47,6 +47,10 @@ The output should look like this:
 ```
 
 """
+from filelock import SoftFileLock
+import filelock
+# Override FileLock globally to use SoftFileLock
+filelock.FileLock = SoftFileLock
 
 import os
 import multiprocessing as mp

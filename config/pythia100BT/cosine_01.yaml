@@ -58,7 +58,7 @@ lr_start: 0.0
 lr_end: 0.0
 lr_end_pct: null
 
-log_every_steps: 500
+log_every_steps: 50
 print_progress: True
 
 use_wandb: True
@@ -66,8 +66,8 @@ wandb_project: 'quantization_pretraining'
 wandb_dir: '/fast/atatjer/wandb/quantization_pretraining/'
 wandb_run_name: 'pythia_160M_100BT_cosine_02'
 exp_name: 'pythia_160M_100BT_cosine_02'
-out_dir: '/fast/atatjer/scalinglawsquantization/checkpoints'
-over_write: False
+out_dir: '/fast/atatjer/tmp'
+over_write: True
 
 resume: False
 resume_step: null
