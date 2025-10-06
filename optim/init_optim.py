@@ -19,10 +19,19 @@ def intialize_optimizer(model, cfg):
       fused=cfg.fused_optim,
       eps=getattr(cfg, 'eps', 1e-8)
     )
-
+  elif cfg.optim == 'adamlh':
+    from .adamLH import AdamLH, get_param_groups
+    param_groups = get_param_groups(model, cfg.weight_decay)
+    optimizer = AdamLH(
+      param_groups,
+      lr=cfg.lr,
+      betas=[cfg.beta1, cfg.beta2],
+      weight_decay=cfg.weight_decay,
+      eps=getattr(cfg, 'eps', 1e-8)
+    )
   elif cfg.optim == 'albertw':
     from .albertw import AlbertW, get_param_groups
-    param_groups = get_param_groups(model, cfg)
+    param_groups = get_param_groups(model, cfg.weight_decay)
     optimizer = AlbertW(
       param_groups,
       lr=cfg.lr,

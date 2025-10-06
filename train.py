@@ -26,6 +26,7 @@ def main(_):
 
   if master_process:
     utils.maybe_make_dir(cfg)
+    print(cfg)
 
   if cfg.use_wandb and master_process:
     utils.init_wandb(cfg)
@@ -39,7 +40,6 @@ def main(_):
 
   # Model
   model, _ = construct_model(cfg)
-  print(model)
 
   # Engine
   engine = TorchEngine(model, cfg, device, local_rank, ckpt)
